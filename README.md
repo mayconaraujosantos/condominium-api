@@ -1,2 +1,2 @@
 # condomininum-api
-api for case study Visitor management in a condominium
+# Api for Case study: Visitor management in a condominium
