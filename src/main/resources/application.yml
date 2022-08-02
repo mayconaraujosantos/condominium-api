@@ -1,4 +1,7 @@
 spring:
+  output:
+    ansi:
+      enabled: always
   datasource:
     url: ${SPRING_DATA_SOURCE_URL}
     username: ${SPRING_DATA_USERNAME}
@@ -14,9 +17,20 @@ spring:
     generate-ddl: true
   flyway:
     enabled: true
-    validate-on-migrate: true
+    driverClassName: org.postgresql.Driver
+    url: ${SPRING_DATA_SOURCE_URL}
+    user: ${SPRING_DATA_USERNAME}
+    password: ${SPRING_DATA_PASSWORD}
+    # locations: classpath:db/migration
+    
+server:
+  port: ${SERVER_PORT}
+  error:
+    include-message: always
 
 logging:
+  file:
+    name: logs/app.log
   level:
-    "[org.springframework]": info
-    "[org.hibernate]": debug
+    "[org.springframework]": DEBUG
+    "[org.hibernate]": DEBUG

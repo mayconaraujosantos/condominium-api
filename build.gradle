@@ -1,7 +1,8 @@
 plugins {
 	id "org.springframework.boot" version "${springBootVersion}"
 	id "io.spring.dependency-management" version "${dependencyManagementVersion}"
-	id "java"
+	id "org.flywaydb.flyway" version "${flywayVersion}"
+  id "java"
 }
 
 def jarSuffix = System.getenv('JAR_SUFFIX') ?: ""
@@ -28,4 +29,12 @@ repositories {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+flyway {
+  url = 'jdbc:postgresql://localhost:5432/condo_test'
+  user = 'postgres'
+  password = 'postgres'
+  schemas = ['public']
+  locations = ['classpath:db/migration']
 }

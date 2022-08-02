@@ -1,5 +1,5 @@
 def lombokVersion = '1.18.24'
-def flywaydbVersion = '9.0.4'
+def flywaydbVersion = '6.5.7'
 def postgresqlVersion = '42.4.0'
 def postgresTestContainersVersion = '1.17.3'
 def testContainersVersion = '1.17.3'
