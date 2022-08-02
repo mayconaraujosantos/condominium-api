@@ -2,6 +2,7 @@ plugins {
 	id "org.springframework.boot" version "${springBootVersion}"
 	id "io.spring.dependency-management" version "${dependencyManagementVersion}"
 	id "org.flywaydb.flyway" version "${flywayVersion}"
+  id "org.sonarqube" version "${sonarVersion}"
   id "java"
 }
 
@@ -31,10 +32,18 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+sonarqube {
+  properties {
+    property "sonar.projectKey", "mayconaraujosantos_condominium-api"
+    property "sonar.organization", "mayconaraujosantos"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
+}
+
 flyway {
-  url = 'jdbc:postgresql://localhost:5432/condo_test'
-  user = 'postgres'
-  password = 'postgres'
+  url = ""
+  user = ""
+  password = ""
   schemas = ['public']
   locations = ['classpath:db/migration']
 }
